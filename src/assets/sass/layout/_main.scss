@@ -1,0 +1,247 @@
+@use "../base/color" as *;
+@use "../base/font";
+@use "../component/input";
+@use "../component/list_body_item_content";
+@use "../base/breakpoints" as *;
+
+.main {
+  margin-top: 22px;
+  margin-bottom: 27px;
+}
+
+.section {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.section + .section {
+  margin-top: 24px;
+}
+
+.list_item {
+  background-color: $grey-400;
+  border-radius: 5px;
+  box-shadow: 0 4px 4px $primary-grey;
+}
+
+.list_head {
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  align-items: center;
+  padding: 24px 32px;
+  @include font.title;
+
+  &_title {
+    flex: 1;
+    padding-left: 40px;
+    position: relative;
+  }
+}
+
+.list_head_checkbox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+}
+
+.list_head_custom_checkbox {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 24px;
+  height: 24px;
+  background-color: $white;
+  border-radius: 2px;
+
+  &::after {
+    content: "";
+    display: none;
+  }
+}
+
+.list_head_checkbox {
+  &:checked ~ .list_head_custom_checkbox {
+    background-color: $primary-blue;
+  }
+
+  &:checked ~ .list_head_custom_checkbox::after {
+    display: inline-block;
+    width: 12px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 0 2px 2px;
+    transform: rotate(-45deg);
+    position: absolute;
+    top: 6px;
+    left: 5.5px;
+  }
+}
+
+.list_head_star_box {
+  position: relative;
+  margin-right: 16px;
+
+  @include deviceSize($tablet) {
+    margin-right: 32px;
+  }
+
+  .list_head_star {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    &:checked ~ .fa-star {
+      color: #f5a623;
+      font-weight: 900;
+    }
+  }
+}
+
+.list_head_pen_box {
+  position: relative;
+
+  .list_head_pen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+
+    &:checked ~ .fa-pen::before {
+      color: $primary-blue;
+    }
+  }
+}
+
+.list_item_seperation {
+  height: 3px;
+  width: 100%;
+  background-color: $primary-grey;
+  border: none;
+}
+
+.list_body {
+  @include font.subtitle;
+  padding: 24px 72px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 22px;
+}
+
+.deadline {
+  @include list_body_item_content.deadline;
+}
+
+.file {
+  @include list_body_item_content.file;
+}
+
+.comment {
+  @include list_body_item_content.comment;
+}
+
+.list_footer_button {
+  display: flex;
+
+  &_cancel {
+    flex: 1;
+    height: 60px;
+    border: 0;
+    color: red;
+    background-color: $white;
+    @include font.title-light;
+    cursor: pointer;
+    border-bottom-left-radius: 5px;
+  }
+
+  &_add {
+    flex: 1;
+    height: 60px;
+    border: 0;
+    color: $white;
+    background-color: $primary-blue;
+    cursor: pointer;
+    @include font.title-light;
+    border-bottom-right-radius: 5px;
+  }
+}
+
+section.saved {
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+
+  .important {
+    background-color: $light-yellow;
+  }
+
+  .list_head {
+    display: flex;
+    flex-direction: column;
+    row-gap: 17px;
+    border-radius: 5px;
+
+    &_main {
+      display: flex;
+      justify-content: flex-start;
+      width: 100%;
+    }
+  }
+}
+
+.list_head_title_box {
+  display: flex;
+  flex-direction: column;
+  row-gap: 15px;
+}
+
+.list_head_star_box,
+.list_head_pen_box {
+  align-self: flex-start;
+}
+
+.list_head_icon {
+  color: $grey-800;
+  display: flex;
+  flex-direction: row;
+  column-gap: 16px;
+  width: 100%;
+  margin-left: 72px;
+
+  .fa-calendar-days::after {
+    content: "5/14";
+    display: inline-block;
+    margin-left: 8px;
+    font-family: font.$font-family;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+  *::after,
+  *::before {
+    vertical-align: middle;
+  }
+}
+
+.list_head_checkbox_star {
+  &:checked ~ .fa-star {
+    color: #f5a623;
+    font-weight: 900;
+  }
+}
+
+#list_head_checkbox6:checked ~ .list_head_title_box {
+  text-decoration: line-through;
+  color: #9b9b9b;
+}
+
+.tasks_left {
+  padding: 0 32px;
+  color: $grey-600;
+  @include font.title-light;
+}
+
+//  margin: -20px 32px 24px 72px;

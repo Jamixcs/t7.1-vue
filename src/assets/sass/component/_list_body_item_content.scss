@@ -1,0 +1,68 @@
+@use "../component/input";
+@use "../base/breakpoints" as *;
+
+
+@mixin layout {
+  display: flex;
+  column-gap: 9px;
+
+  &_content {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    flex: 1;
+  }
+}
+
+@mixin deadline {
+  @include layout;
+
+  &_content {
+    &_info {
+      display: flex;
+      flex-direction: column;
+      row-gap: 8px;
+
+      @include deviceSize($tablet) {
+        display: flex;
+        flex-direction: row;
+        column-gap: 8px;
+      }
+
+      input[type=text] {
+        @include input.initial-text-style;
+      }
+    }
+  }
+}
+
+@mixin file {
+  @include layout;
+
+  &_content {
+    &_info {
+      position: relative;
+
+      &_input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+      }
+
+      &_custom_input {
+        @include input.initial-file-style
+      }
+    }
+  }
+}
+
+@mixin comment {
+  @include layout;
+
+  &_content {
+    &_info textarea {
+      @include input.initial-textarea-style;
+    }
+  }
+}

@@ -1,0 +1,7 @@
+@use "../base/color" as *;
+
+body {
+  background-color: $primary-grey;
+  font-family: "Roboto", sans-serif;
+  min-width: 320px;
+}

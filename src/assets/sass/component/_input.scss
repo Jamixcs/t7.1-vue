@@ -1,0 +1,53 @@
+@use "../base/color" as *;
+@use "../base/font" as *;
+
+
+@mixin initial-text-style {
+  padding: 10px;
+  border: 0;
+  max-width: 50%;
+
+  &::placeholder {
+    color: $grey-600;
+  }
+
+  &:focus {
+    outline: 1px solid $grey-600;
+  }
+}
+
+@mixin initial-file-style {
+  display: block;
+  width: 32px;
+  height: 32px;
+  background-color: $grey-600;
+  border-radius: 2px;
+
+  &::after {
+    content: "+";
+    display: flex;
+    flex: 1;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    font-weight: 300;
+  }
+}
+
+@mixin initial-textarea-style {
+  width: 100%;
+  padding: 10px;
+  border: 0;
+  resize: none;
+  font-family: $font-family;
+  color: $grey-400;
+
+  &::placeholder {
+    color: $grey-600;
+  }
+
+  &:focus {
+    outline: 1px solid $grey-600;
+  }
+}

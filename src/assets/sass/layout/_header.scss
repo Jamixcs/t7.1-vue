@@ -1,0 +1,38 @@
+@use "../base/color" as *;
+@use "../base/font";
+@use "../base/breakpoints" as *;
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  background-color: $primary-blue;
+  @include font.title;
+
+  @include deviceSize($tablet) {
+    flex-direction: row;
+    align-items: center;
+    gap: 50px;
+  }
+
+  &_item {
+    flex-basis: 100%;
+    text-align: center;
+    color: $dark-blue;
+    padding: 25px;
+    @include deviceSize($tablet) {
+      flex-basis: auto;
+    }
+
+    &:hover {
+      color: $white;
+    }
+
+    &.focus {
+      box-shadow: inset 0px -5px 0px $dark-blue;
+      color: $white;
+      font-weight: 500;
+    }
+  }
+}
